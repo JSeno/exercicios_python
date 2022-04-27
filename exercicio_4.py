@@ -14,12 +14,13 @@ aceitar_jogar = input()
 if aceitar_jogar == 'N' or 'n':
     print('Obrigado por jogar')
 elif aceitar_jogar == 'S' or 's':
+    print('Vamos jogar então!')
     num1 = int(input("Digite um número de 1 a 10: "))
     num2 = random.randint(1, 10)
     if num1 == num2:
         print('Parabéns você acertou o número')
     else:
-        print('Você errou o número era {} e você digitou {}, tente novamente'.format(num2, num1))
+        print(f'Você errou o número era {num2} e você digitou {num1}, tente novamente')
 else:
     print('Você digitou um valor inválido, tente novamente')
 
