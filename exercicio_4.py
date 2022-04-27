@@ -1,5 +1,3 @@
-# TODO: Criar função para receber respota de continuar ou não jogando e colocar o jogo em loop.
-
 """
 Adivinhe o número
 Você deve chutar um número de 1 à 10 e será um número aleatório.
@@ -11,16 +9,32 @@ import random
 print('Vamos Jogar Advinhe o Número?')
 print('Se sim digite S e se não digite N')
 aceitar_jogar = input()
-if aceitar_jogar == 'N' or 'n':
+if aceitar_jogar == 'N' or aceitar_jogar == 'n':
     print('Obrigado por jogar')
-elif aceitar_jogar == 'S' or 's':
-    print('Vamos jogar então!')
-    num1 = int(input("Digite um número de 1 a 10: "))
-    num2 = random.randint(1, 10)
-    if num1 == num2:
-        print('Parabéns você acertou o número')
-    else:
-        print(f'Você errou o número era {num2} e você digitou {num1}, tente novamente')
+elif aceitar_jogar == 'S' or aceitar_jogar == 's':
+    flag = True
+    while flag:
+        print('Vamos jogar então!')
+        num2 = random.randint(1, 10)
+        num1 = int(input("Digite um número de 1 a 10: "))
+        while num1 != num2:
+            if num1 == 'P':
+                break
+            print(f'Você digitou {num1} e o número era {num2} /(T_T)/ ')
+            num1 = int(input("Digite um número de 1 a 10,\nPara desistir digite P: "))
+            print(end="\n")
+            num2 = random.randint(1, 10)
+        if num1 == num2:
+            print('+--------------------------------------------+')
+            print('\(^_^)/ Parabéns você acertou o número \(^_^)/')
+            print('+--------------------------------------------+')
+            cont = input('Deseja jogar novamente? S/N ')
+
+            if cont == 'N' or cont == 'n':
+                flag = False
+        else:
+            print('Game Over')
+            flag = False
 else:
     print('Você digitou um valor inválido, tente novamente')
 
