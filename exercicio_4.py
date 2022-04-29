@@ -1,44 +1,37 @@
 """
 Adivinhe o número
-Você deve chutar um número de 1 à 10 e será um número aleatório.
+Você deve chutar um número de 1 à 50 e será um número aleatório.
 Caso você acerte, você ganha.
+TDOO: após consertar a lógica do jogo transformar em um jogo de dados serão lançados 3 dados e você terá que apostar
+qual número deve ser o resultado.
 """
 import random
 
 
-print('Vamos Jogar Advinhe o Número?')
-print('Se sim digite S e se não digite N')
-aceitar_jogar = input()
-if aceitar_jogar == 'N' or aceitar_jogar == 'n':
-    print('Obrigado por jogar')
-elif aceitar_jogar == 'S' or aceitar_jogar == 's':
-    flag = True
-    while flag:
-        print('Vamos jogar então!')
-        num2 = random.randint(1, 10)
-        num1 = int(input("Digite um número de 1 a 10: "))
-        while num1 != num2:
-            if num1 == 'P':
-                break
-            print(f'Você digitou {num1} e o número era {num2} /(T_T)/ ')
-            num1 = int(input("Digite um número de 1 a 10,\nPara desistir digite P: "))
-            print(end="\n")
-            num2 = random.randint(1, 10)
-        if num1 == num2:
-            print('+--------------------------------------------+')
-            print('\(^_^)/ Parabéns você acertou o número \(^_^)/')
-            print('+--------------------------------------------+')
-            cont = input('Deseja jogar novamente? S/N ')
-
-            if cont == 'N' or cont == 'n':
-                flag = False
-        else:
-            print('Game Over')
-            flag = False
-else:
-    print('Você digitou um valor inválido, tente novamente')
+def aceitar_jogar():
+    if aceitar_jogar == 's' or aceitar_jogar == 'S':
+        return True
+    elif aceitar_jogar == 'n' or aceitar_jogar == 'N' or aceitar_jogar == 'p' or aceitar_jogar == 'P':
+        return False
+    else:
+        print('\nVocê digitou um valor inválido.\n')
+        return aceitar_jogar()
 
 
+def jogar():
+    print('\nVocê deve chutar um número de 1 à 10 e será um número aleatório.\n')
+    print('Caso você acerte, você ganha.\n')
+    print('Para sair, digite "N".\n')
+
+    print('\nDigite um número de 1 à 10')
+    numero_chutado_usuario = input()
+    numero_chutado = random.randint(1, 10)
+    if numero_chutado_usuario == numero_chutado:
+        print('\nParabéns, você acertou!')
+    elif numero_chutado_usuario != numero_chutado:
+        print('\nVocê errou!')
+        print(f'O número era {numero_chutado} e você chutou {numero_chutado_usuario}.')
+jogar()
 
 
 
