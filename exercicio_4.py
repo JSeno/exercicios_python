@@ -7,32 +7,26 @@ qual número deve ser o resultado.
 """
 import random
 
+print('Vamos jogar um jogo de adivinhação!')
+print('Você deve chutar um número de 1 à 50 e será um número aleatório.')
+print('Caso você acerte, você ganha.')
+print('Vamos começar!')
 
-def aceitar_jogar():
-    if aceitar_jogar == 's' or aceitar_jogar == 'S':
-        return True
-    elif aceitar_jogar == 'n' or aceitar_jogar == 'N' or aceitar_jogar == 'p' or aceitar_jogar == 'P':
-        return False
+print('Se você quiser jogar digite Sim, caso contrário digite Não.')
+aceitar_jogar = input('Digite sua escolha: ')
+
+if aceitar_jogar == 'sim' or aceitar_jogar == 'Sim' or aceitar_jogar == 's' or aceitar_jogar == 'S':
+    print('OK! Vamos começar!')
+    print('Escolha um número de 1 à 50.')
+    numero_chutado = int(input('Digite seu número: '))
+    numero_aleatorio = random.randint(1, 2)
+
+    if numero_chutado == numero_aleatorio:
+        print('Parabéns! Você acertou!')
+
     else:
-        print('\nVocê digitou um valor inválido.\n')
-        return aceitar_jogar()
+        print('Que pena! Você errou!')
+        print('O número era {} e você digitou {}.'.format(numero_aleatorio, numero_chutado))
 
-
-def jogar():
-    print('\nVocê deve chutar um número de 1 à 10 e será um número aleatório.\n')
-    print('Caso você acerte, você ganha.\n')
-    print('Para sair, digite "N".\n')
-
-    print('\nDigite um número de 1 à 10')
-    numero_chutado_usuario = input()
-    numero_chutado = random.randint(1, 10)
-    if numero_chutado_usuario == numero_chutado:
-        print('\nParabéns, você acertou!')
-    elif numero_chutado_usuario != numero_chutado:
-        print('\nVocê errou!')
-        print(f'O número era {numero_chutado} e você chutou {numero_chutado_usuario}.')
-jogar()
-
-
-
-        
+else:
+    print('Tudo bem! Até a próxima!')
